@@ -1,7 +1,7 @@
 export class Skill {
-  empSkillId!: number
-  empId!: number
-  skill!: string
-  totalYearExp!: number
-  lastVersionUsed!: string
+  empSkillId: number = 0
+  empId: number = 0
+  skill: string = ''
+  totalYearExp: number = 0
+  lastVersionUsed: string = ''
 }

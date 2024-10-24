@@ -16,55 +16,59 @@
           <div class="row">
             <div class=" col-md-4 p-3">
                 <label class="form-label" >Name :</label>
-                <input type="text" placeholder="Enter Name" class="form-control p-2">
+                <input type="text" [(ngModel)]="employee.empName" placeholder="Enter Name"  class="form-control p-2">
             </div>
             <div class=" col-md-4 p-3">
               <label class="form-label" >Email :</label>
-                <input type="text" placeholder="Enter Email" class="form-control p-2">
+                <input type="text" [(ngModel)]="employee.empEmailId" placeholder="Enter Email" class="form-control p-2">
             </div>
             <div class=" col-md-4 p-3">
               <label class="form-label" >Password :</label>
-                <input type="password" placeholder="Enter Password" class="form-control p-2">
+                <input type="password" placeholder="Enter Password" [(ngModel)]="employee.password" class="form-control p-2">
             </div>
           </div>
           <div class="row">
               <div class=" p-3 col-md-6">
                 <label class="form-label" >Designation :</label>
-                  <input type="text" placeholder="Enter Designation" class="form-control p-2">
+                <select class="form-select p-2" [(ngModel)]="employee.empDesignationId">
+                  <option value="">Open this select menu</option>
+                  <option *ngFor="let designation of designationList" value="{{ designation.designationId }}">{{ designation.id }}</option>
+                </select>
+                  <input type="text" [(ngModel)]="employee.empDesignationId" placeholder="Enter Designation" class="form-control p-2">
               </div>
               <div class=" p-3 col-md-6">
                 <label class="form-label" >Contact No :</label>
-                  <input type="text" placeholder="Enter Contact No" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empContactNo" placeholder="Enter Contact No" class="form-control p-2">
               </div>
           </div>
           <div class="row">
               <div class=" p-3 col-md-6">
                 <label class="form-label" >Alternate Contact No :</label>
-                  <input type="text" placeholder="Alternate Contact No." class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empAltContactNo" placeholder="Alternate Contact No." class="form-control p-2">
               </div>
               <div class=" p-3 col-md-6">
                 <label class="form-label" >Personal Email ID :</label>
-                  <input type="text" placeholder="Enter Personal EmailID" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empPersonalEmailId" placeholder="Enter Personal EmailID" class="form-control p-2">
               </div>
           </div>
           <div class="row">
               <div class=" p-3 col-md-6">
                 <label class="form-label" >Total Years of Experience :</label>
-                  <input type="text" placeholder="Enter total Years of Experience" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empExpTotalYear" placeholder="Enter total Years of Experience" class="form-control p-2">
               </div>
               <div class=" p-3 col-md-6">
                 <label class="form-label" >Total Month of Experience :</label>
-                  <input type="text" placeholder="Enter month of Experience" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empExpTotalMonth" placeholder="Enter month of Experience" class="form-control p-2">
               </div>
           </div>
           <div class="row">
               <div class=" p-3 col-md-6">
                 <label class="form-label" >City :</label>
-                  <input type="text" placeholder="Enter City" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empPerCity" placeholder="Enter City" class="form-control p-2">
               </div>
               <div class=" p-3 col-md-6">
                 <label class="form-label" >State :</label>
-                  <input type="text" placeholder="Enter State" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empPerState" placeholder="Enter State" class="form-control p-2">
               </div>
           </div>
           <div class="row">
@@ -76,11 +80,11 @@
           <div class="row">
               <div class=" p-3 col-md-6">
                 <label class="form-label" >Pincode :</label>
-                  <input type="text" placeholder="Enter Pincode" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empAddress" placeholder="Enter Pincode" class="form-control p-2">
               </div>
               <div class=" p-3 col-md-6">
               <label class="form-label" >Personal City :</label>
-                  <input type="text" placeholder="Enter Personal City" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empPerCity" placeholder="Enter Personal City" class="form-control p-2">
               </div>
 
           </div>
@@ -88,11 +92,11 @@
 
               <div class=" p-3 col-md-6">
                 <label class="form-label" >Personal State :</label>
-                  <input type="text" placeholder="Enter Personal State" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empPerState" placeholder="Enter Personal State" class="form-control p-2">
               </div>
               <div class=" p-3 col-md-6">
                 <label class="form-label" >Personal Pin Code :</label>
-                  <input type="text" placeholder="Enter Personal Pin Code" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empPinCode" placeholder="Enter Personal Pin Code" class="form-control p-2">
               </div>
 
           </div>
@@ -122,15 +126,15 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
+                      <tr *ngFor="let sikill of employee.emplSkills" >
                           <td >
-                              <input type="text" placeholder="Skill" class="form-control p-2">
+                              <input type="text" [(ngModel)]="sikill.skill" placeholder="Skill" class="form-control p-2">
                           </td>
                           <td>
-                              <input type="text" placeholder="Total Experience" class="form-control p-2">
+                              <input type="text" [(ngModel)]="sikill.totalYearExp" placeholder="Total Experience" class="form-control p-2">
                           </td>
                           <td>
-                              <input type="text" placeholder="Last Version" class="form-control p-2">
+                              <input type="text" [(ngModel)]="sikill.lastVersionUsed" placeholder="Last Version" class="form-control p-2">
 
                           </td>
 
@@ -169,21 +173,21 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
+                      <tr *ngFor="let experience of employee.emplExperiences">
                           <td>
-                              <input type="text" class="form-control p-2 " placeholder="Company">
+                              <input type="text" [(ngModel)]="experience.companyName" class="form-control p-2 " placeholder="Company">
                           </td>
                           <td>
-                              <input type="date" class="form-control p-2" placeholder="Start Date">
+                              <input type="date" [(ngModel)]="experience.startDate" class="form-control p-2" placeholder="Start Date">
                           </td>
                           <td>
-                              <input type="date" class="form-control p-2" placeholder="End Date">
+                              <input type="date" [(ngModel)]="experience.endDate" class="form-control p-2" placeholder="End Date">
                           </td>
                           <td>
-                              <input type="text" class="form-control p-2" placeholder="Designation">
+                              <input type="text" [(ngModel)]="experience.designation" class="form-control p-2" placeholder="Designation">
                           </td>
                           <td>
-                              <input type="text" class="form-control p-2" placeholder="Project">
+                              <input type="text" [(ngModel)]="experience.projectsWorkedOn" class="form-control p-2" placeholder="Project">
                           </td>
 
                           <td class=" btn-container d-flex ">

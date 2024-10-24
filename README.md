@@ -25,3 +25,20 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+# DEV APP
+
+information à connatre sur le developpement
+
+## API BACK-END
+
+EmployeeApp
+https://freeapi.gerasim.in/index.html
+
+## STEP BY STEP
+
+https://codepen.io/mmuazam99/pen/dyVJQJq
+ 
+## template HTML
+
+https://github.com/voidChetan/youTube_project_html_templates/blob/main/employeeApp/index.html
