@@ -20,6 +20,6 @@ export class Employee {
   empPerPinCode: string =''
   empPerAddress: string =''
   password: string =''
-  emplSkills :Object = []
-  emplExperiences :Object =[]
+  erpEmployeeSkills :Object = []
+  ermEmpExperiences :Object =[]
 }

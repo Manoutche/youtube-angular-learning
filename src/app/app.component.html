@@ -7,10 +7,11 @@
 
     </ul>
     <div id="line">
-      <div id="line-progress"></div>
+      <div id="line-progress" [style.width.%]="this.activeStep.progression"></div>
     </div>
     <!-- progress-bar-container -->
     <div id="progress-content-section">
+      <!-- STEP 1 -->
       <div class="section-content step1" [ngClass]="{'active': activeStep.stepName == 'Basic Details'} ">
         <div class="container-fluid">
           <div class="row">
@@ -20,7 +21,7 @@
             </div>
             <div class=" col-md-4 p-3">
               <label class="form-label" >Email :</label>
-                <input type="text" [(ngModel)]="employee.empEmailId" placeholder="Enter Email" class="form-control p-2">
+                <input type="text" [(ngModel)]="employee.empEmailId" [(ngModel)]="employee.userName" placeholder="Enter Email" class="form-control p-2">
             </div>
             <div class=" col-md-4 p-3">
               <label class="form-label" >Password :</label>
@@ -28,15 +29,19 @@
             </div>
           </div>
           <div class="row">
-              <div class=" p-3 col-md-6">
+              <div class=" p-3 col-md-4">
                 <label class="form-label" >Designation :</label>
                 <select class="form-select p-2" [(ngModel)]="employee.empDesignationId">
-                  <option value="">Open this select menu</option>
-                  <option *ngFor="let designation of designationList" value="{{ designation.designationId }}">{{ designation.id }}</option>
+                  <option *ngFor="let designation of designationList" [value]="designation.designationId">{{ designation.designation }}</option>
                 </select>
-                  <input type="text" [(ngModel)]="employee.empDesignationId" placeholder="Enter Designation" class="form-control p-2">
               </div>
-              <div class=" p-3 col-md-6">
+              <div class=" p-3 col-md-4">
+                <label class="form-label" >Roles :</label>
+                <select class="form-select p-2" [(ngModel)]="employee.roleId">
+                  <option *ngFor="let role of roleList" [value]="role.roleId">{{ role.role }}</option>
+                </select>
+              </div>
+              <div class=" p-3 col-md-4">
                 <label class="form-label" >Contact No :</label>
                   <input type="text" [(ngModel)]="employee.empContactNo" placeholder="Enter Contact No" class="form-control p-2">
               </div>
@@ -64,11 +69,11 @@
           <div class="row">
               <div class=" p-3 col-md-6">
                 <label class="form-label" >City :</label>
-                  <input type="text" [(ngModel)]="employee.empPerCity" placeholder="Enter City" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empCity" placeholder="Enter City" class="form-control p-2">
               </div>
               <div class=" p-3 col-md-6">
                 <label class="form-label" >State :</label>
-                  <input type="text" [(ngModel)]="employee.empPerState" placeholder="Enter State" class="form-control p-2">
+                  <input type="text" [(ngModel)]="employee.empState" placeholder="Enter State" class="form-control p-2">
               </div>
           </div>
           <div class="row">
@@ -106,8 +111,12 @@
                   <textarea placeholder="Enter Personal Address" class="form-control p-2"></textarea>
               </div>
           </div>
+          <div class="row justify-content-end my-3">
+            <button class="btn btn-primary col-2" (click)="gotoNexStep()" >Next</button>
+          </div>
         </div>
       </div>
+      <!-- STEP 2 -->
       <div class="section-content step2" [ngClass]="{'active': activeStep.stepName == 'Skill'} ">
         <div class="container-fluid">
 
@@ -126,7 +135,7 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr *ngFor="let sikill of employee.emplSkills" >
+                      <tr *ngFor="let sikill of employee.erpEmployeeSkills" >
                           <td >
                               <input type="text" [(ngModel)]="sikill.skill" placeholder="Skill" class="form-control p-2">
                           </td>
@@ -145,15 +154,14 @@
                           </td>
                       </tr>
                   </tbody>
-                  <tfoot>
-                  </tfoot>
               </table>
-              <div class="btn-container d-flex justify-content-end">
-
-              </div>
+          </div>
+          <div class="row justify-content-end my-3">
+            <button class="btn btn-primary col-2" (click)="gotoNexStep()" >Next</button>
           </div>
         </div>
       </div>
+      <!-- STEP 3 -->
       <div class="section-content step3" [ngClass]="{'active': activeStep.stepName == 'Experiences'} ">
         <div class="container-fluid">
           <div class="row justify-content-between p-3">
@@ -173,7 +181,7 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr *ngFor="let experience of employee.emplExperiences">
+                      <tr *ngFor="let experience of employee.ermEmpExperiences">
                           <td>
                               <input type="text" [(ngModel)]="experience.companyName" class="form-control p-2 " placeholder="Company">
                           </td>
@@ -197,10 +205,11 @@
                           </td>
                       </tr>
                   </tbody>
-                  <tfoot>
-                  </tfoot>
               </table>
 
+          </div>
+          <div class="row justify-content-end my-3">
+            <button class="btn btn-primary col-2" (click)="saveEmployee()" >Apply now</button>
           </div>
         </div>
       </div>

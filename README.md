@@ -30,6 +30,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 information à connatre sur le developpement
 
+## youtube link
+https://www.youtube.com/playlist?list=PL7JmcZV0UQtU5ds45KRtSXA19sOntKTnI
+
 ## API BACK-END
 
 EmployeeApp
@@ -42,3 +45,6 @@ https://codepen.io/mmuazam99/pen/dyVJQJq
 ## template HTML
 
 https://github.com/voidChetan/youTube_project_html_templates/blob/main/employeeApp/index.html
+
+## FIRST SAVE 
+id=580

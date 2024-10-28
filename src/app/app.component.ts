@@ -16,11 +16,16 @@ import {  HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
+
   constructor (private http: HttpClient){
 
   }
 
   ngOnInit(): void {
+    /** dans cette fonction on met toute les fonction qui seront appelé au moment du lance ment de l'App */
+
+    this.loadDesignation()
+    this.loadRol()
 
   }
 
@@ -28,14 +33,17 @@ export class AppComponent implements OnInit {
   stepsList : any [] = [
     {
       stepName: 'Basic Details',
+      progression: 8,
       isCompleted: false
     },
     {
       stepName: 'Skill',
+      progression: 50,
       isCompleted: false
     },
     {
       stepName: 'Experiences',
+      progression: 100,
       isCompleted: false
     },
   ]
@@ -51,17 +59,30 @@ export class AppComponent implements OnInit {
   loadDesignation(){
     this.http.get('https://freeapi.gerasim.in/api/EmployeeApp/GetAllDesignation').subscribe((res:any)=>{
       if (res.result) {
-
         this.designationList = res.data
       }
     })
   }
 
   loadRol(){
-    this.http.get('https://freeapi.gerasim.in/api/EmployeeApp/GetAllRolle')
+    this.http.get('https://freeapi.gerasim.in/api/EmployeeApp/GetAllRoles').subscribe((res:any)=>{
+      if (res.result) {
+        this.roleList = res.data
+      }
+    })
   }
   setActiveStep(activeStep: any) {
     this.activeStep = activeStep
+  }
+
+  gotoNexStep(){
+    let currentStep =  this.stepsList.find(m => m.stepName == this.activeStep.stepName)
+    currentStep.isCompleted = true
+    let currentStepIndex = this.stepsList.findIndex(item => item.stepName === currentStep.stepName)
+
+    if (currentStepIndex !== -1 && this.stepsList[currentStepIndex+1] !==undefined) {
+      this.activeStep = this.stepsList[++currentStepIndex]
+    }
   }
   addSkills() {
     const newSkill =  {
@@ -71,7 +92,7 @@ export class AppComponent implements OnInit {
       totalYearExp: 0,
       lastVersionUsed: '',
     }
-    this.employee.emplSkills.unshift(newSkill)
+    this.employee.erpEmployeeSkills.unshift(newSkill)
   }
   addExperience() {
     const newExperience = {
@@ -83,7 +104,7 @@ export class AppComponent implements OnInit {
       designation: '',
       projectsWorkedOn:  ''
     }
-    this.employee.emplExperiences.unshift(newExperience)
+    this.employee.ermEmpExperiences.unshift(newExperience)
   }
 
   saveEmployee(){
