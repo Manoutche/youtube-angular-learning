@@ -1,7 +1,28 @@
+
+<div class="row container-fluid p-5">
+  <table class="table  table-hover table-bordered">
+    <thead class="table-secondary">
+      <tr >
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employees of employeeList">
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>mdo</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <div class="progress-wrapper">
   <div id="progress-bar-container">
     <ul>
-      <li class="step step01 " (click)="setActiveStep(step)" [ngClass]="{'active': step.stepName == activeStep.stepName} " *ngFor="let step of stepsList" >
+      <li class="step step01" (click)="setActiveStep(step)" [ngClass]="{'active': step.stepName == activeStep.stepName} " *ngFor="let step of stepsList" >
         <div class="step-inner">{{ step.stepName }}</div>
       </li>
 

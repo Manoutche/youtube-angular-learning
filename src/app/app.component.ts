@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
 
     this.loadDesignation()
     this.loadRol()
+    this.loadEmployee()
 
   }
 
@@ -54,12 +55,21 @@ export class AppComponent implements OnInit {
   emplExperience: any = new Experience()
 
   designationList: any [] = []
+  employeeList: any [] = []
   roleList: any [] = []
 
   loadDesignation(){
     this.http.get('https://freeapi.gerasim.in/api/EmployeeApp/GetAllDesignation').subscribe((res:any)=>{
       if (res.result) {
         this.designationList = res.data
+      }
+    })
+  }
+
+  loadEmployee(){
+    this.http.get('https://freeapi.gerasim.in/api/EmployeeApp/GetAllEmployee').subscribe((res:any)=>{
+      if (res.result) {
+        this.employeeList = res.data
       }
     })
   }
